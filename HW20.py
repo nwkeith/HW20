@@ -52,6 +52,8 @@ def paren_check(parString):
         return False
     index2=len(parString)//2
     while index2<len(parString):
+        if s.is_empty(): # Added for "())"
+            return False # If the size of the right portion exceeds the size of the left portion then it is not symmetrical.
         left=s.pop()
         if parString[index2]=="]" and left=='[':
             index2+=1
@@ -67,4 +69,7 @@ print(paren_check("{[()]}"))
 print(paren_check("{[()])"))
 print(paren_check(""))
 print(paren_check("((")) # Mine seems to work here. Lucky me.
+print(paren_check("())")) # Should be fixed now
+print(paren_check("))"))
+print(paren_check("((()"))
 
